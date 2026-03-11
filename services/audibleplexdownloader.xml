@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Audible Plex Downloader</Name>
+  <Repository>ghcr.io/mstrhakr/audible-plex-downloader:latest</Repository>
+  <Registry>https://github.com/mstrhakr/audible-plex-downloader/pkgs/container/audible-plex-downloader</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/mstrhakr/audible-plex-downloader/issues</Support>
+  <Project>https://github.com/mstrhakr/audible-plex-downloader</Project>
+  <Overview>&#xD;
+  Audible Plex Downloader is a pure Go containerized app that authenticates with Audible, downloads audiobooks, removes DRM with FFmpeg, enriches metadata via Audnexus, and organizes books for Plex in an Author/Title/Title.m4b layout.&#xD;
+&#xD;
+  Latest release at time of this template update: v0.1.4. The container repository is set to the moving latest tag from GitHub Container Registry so new installs track the current published image.&#xD;
+&#xD;
+  Configuration:&#xD;
+  **WebUI Port** - Port for the web interface. Open this after the container starts to authenticate with Audible and manage downloads. Default is 8080.&#xD;
+  **Config Path** - Stores config.yaml, credentials.json, and the default SQLite database.&#xD;
+  **Audiobooks Path** - Final Plex library destination for organized audiobook files.&#xD;
+  **Downloads Path** - Temporary working directory for downloaded and processed files.&#xD;
+  **PUID / PGID** - Optional Unraid-style UID and GID overrides used when the container starts as root.&#xD;
+  **Take Ownership** - If set to true, the entrypoint will recursively chown /config, /audiobooks, and /downloads before dropping privileges.&#xD;
+  **Database Type** - sqlite by default. Change to postgres only if you will also provide a PostgreSQL DSN.&#xD;
+  **Output Format** - m4b by default, or set to mp3 if preferred.&#xD;
+  **Sync Schedule / Sync Mode** - Control automatic sync cadence and whether scheduled syncs run in quick or full mode.&#xD;
+&#xD;
+  Supported image tags include latest, v0, v0.1, and exact release tags such as v0.1.4 if you want to pin versions manually.&#xD;
+  </Overview>
+  <Category>MediaApp:Audio Downloaders: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <TemplateURL>https://github.com/mstrhakr/docker-repository</TemplateURL>
+  <Icon>https://github.com/mstrhakr.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="WebUI Port" Target="8080" Default="8080" Mode="tcp" Description="Port for the Audible Plex Downloader web UI" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Optional UID to run the app as when container starts as root" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Optional GID to run the app as when container starts as root" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="Take Ownership" Target="TAKE_OWNERSHIP" Default="false" Mode="" Description="Recursively chown mounted folders before dropping privileges" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Database Type" Target="DATABASE_TYPE" Default="sqlite" Mode="" Description="Database backend: sqlite or postgres" Type="Variable" Display="advanced" Required="false" Mask="false">sqlite</Config>
+  <Config Name="Database Path" Target="DATABASE_PATH" Default="/config/audible.db" Mode="" Description="SQLite database path when DATABASE_TYPE=sqlite" Type="Variable" Display="advanced" Required="false" Mask="false">/config/audible.db</Config>
+  <Config Name="Database DSN" Target="DATABASE_DSN" Default="" Mode="" Description="PostgreSQL connection string when DATABASE_TYPE=postgres" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Output Format" Target="OUTPUT_FORMAT" Default="m4b" Mode="" Description="Output format: m4b or mp3" Type="Variable" Display="advanced" Required="false" Mask="false">m4b</Config>
+  <Config Name="Sync Schedule" Target="SYNC_SCHEDULE" Default="0 */6 * * *" Mode="" Description="Cron schedule for automatic sync runs" Type="Variable" Display="advanced" Required="false" Mask="false">0 */6 * * *</Config>
+  <Config Name="Sync Mode" Target="SYNC_MODE" Default="full" Mode="" Description="Scheduled sync mode: quick or full" Type="Variable" Display="advanced" Required="false" Mask="false">full</Config>
+  <Config Name="Plex URL" Target="PLEX_URL" Default="" Mode="" Description="Optional Plex server URL for library scan triggers" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Plex Token" Target="PLEX_TOKEN" Default="" Mode="" Description="Optional Plex auth token for scan triggers" Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
+  <Config Name="Config Path" Target="/config" Default="/mnt/user/appdata/audible-plex-downloader/config" Mode="rw" Description="Stores config.yaml, credentials.json, and the SQLite database" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/audible-plex-downloader/config</Config>
+  <Config Name="Audiobooks Path" Target="/audiobooks" Default="/mnt/user/media/audiobooks" Mode="rw" Description="Final audiobook library location for Plex" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/media/audiobooks</Config>
+  <Config Name="Downloads Path" Target="/downloads" Default="/mnt/user/appdata/audible-plex-downloader/downloads" Mode="rw" Description="Temporary working directory for downloads and processing" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/audible-plex-downloader/downloads</Config>
+</Container>

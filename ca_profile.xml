@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Maintainer>
+  <Icon>https://github.com/mstrhakr.png</Icon>
+  <Profile>
+    Maintainer of Community Applications templates and related Docker resources in this repository. Templates are kept aligned with current upstream releases and include practical defaults for Unraid deployments.
+  </Profile>
+  <DonateLink/>
+  <DonateText/>
+</Maintainer>
