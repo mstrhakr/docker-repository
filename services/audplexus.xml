@@ -30,7 +30,7 @@
   <Category>MediaApp:Audio Downloaders: Tools:</Category>
   <WebUI>http://[IP]:[PORT:8080]/</WebUI>
   <TemplateURL>https://github.com/mstrhakr/docker-repository</TemplateURL>
-  <Icon>https://github.com/mstrhakr.png</Icon>
+  <Icon>https://raw.githubusercontent.com/mstrhakr/audplexus/refs/heads/master/audplexus-plex-logo.svg</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
