@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <Name>Audible Plex Downloader</Name>
-  <Repository>ghcr.io/mstrhakr/audible-plex-downloader:latest</Repository>
-  <Registry>https://github.com/mstrhakr/audible-plex-downloader/pkgs/container/audible-plex-downloader</Registry>
+  <Name>Audplexus</Name>
+  <Repository>ghcr.io/mstrhakr/audplexus:latest</Repository>
+  <Registry>https://github.com/mstrhakr/audplexus/pkgs/container/audplexus</Registry>
   <Network>bridge</Network>
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://github.com/mstrhakr/audible-plex-downloader/issues</Support>
-  <Project>https://github.com/mstrhakr/audible-plex-downloader</Project>
+  <Support>https://github.com/mstrhakr/audplexus/issues</Support>
+  <Project>https://github.com/mstrhakr/audplexus</Project>
   <Overview>&#xD;
-  Audible Plex Downloader is a pure Go containerized app that authenticates with Audible, downloads audiobooks, removes DRM with FFmpeg, enriches metadata via Audnexus, and organizes books for Plex in an Author/Title/Title.m4b layout.&#xD;
+  Audplexus is a pure Go containerized app that authenticates with Audible, downloads audiobooks, removes DRM with FFmpeg, enriches metadata via Audnexus, and organizes books for Plex in an Author/Title/Title.m4b layout.&#xD;
 &#xD;
   Latest release at time of this template update: v0.1.4. The container repository is set to the moving latest tag from GitHub Container Registry so new installs track the current published image.&#xD;
 &#xD;
@@ -37,7 +37,7 @@
   <DonateText/>
   <DonateLink/>
   <Requires/>
-  <Config Name="WebUI Port" Target="8080" Default="8080" Mode="tcp" Description="Port for the Audible Plex Downloader web UI" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="WebUI Port" Target="8080" Default="8080" Mode="tcp" Description="Port for the Audplexus web UI" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
   <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Optional UID to run the app as when container starts as root" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
   <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Optional GID to run the app as when container starts as root" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
   <Config Name="Take Ownership" Target="TAKE_OWNERSHIP" Default="false" Mode="" Description="Recursively chown mounted folders before dropping privileges" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
@@ -49,7 +49,7 @@
   <Config Name="Sync Mode" Target="SYNC_MODE" Default="full" Mode="" Description="Scheduled sync mode: quick or full" Type="Variable" Display="advanced" Required="false" Mask="false">full</Config>
   <Config Name="Plex URL" Target="PLEX_URL" Default="" Mode="" Description="Optional Plex server URL for library scan triggers" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="Plex Token" Target="PLEX_TOKEN" Default="" Mode="" Description="Optional Plex auth token for scan triggers" Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
-  <Config Name="Config Path" Target="/config" Default="/mnt/user/appdata/audible-plex-downloader/config" Mode="rw" Description="Stores config.yaml, credentials.json, and the SQLite database" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/audible-plex-downloader/config</Config>
+  <Config Name="Config Path" Target="/config" Default="/mnt/user/appdata/audplexus/config" Mode="rw" Description="Stores config.yaml, credentials.json, and the SQLite database" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/audplexus/config</Config>
   <Config Name="Audiobooks Path" Target="/audiobooks" Default="/mnt/user/media/audiobooks" Mode="rw" Description="Final audiobook library location for Plex" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/media/audiobooks</Config>
-  <Config Name="Downloads Path" Target="/downloads" Default="/mnt/user/appdata/audible-plex-downloader/downloads" Mode="rw" Description="Temporary working directory for downloads and processing" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/audible-plex-downloader/downloads</Config>
+  <Config Name="Downloads Path" Target="/downloads" Default="/mnt/user/appdata/audplexus/downloads" Mode="rw" Description="Temporary working directory for downloads and processing" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/audplexus/downloads</Config>
 </Container>
